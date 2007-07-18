@@ -5,7 +5,7 @@
 
 Name:           %{name}
 Version:        %{version}
-Release:        %mkrel 4.3
+Release:        %mkrel 4.4
 Epoch:		0
 Summary:        Open source implementation of JMX Java API
 License:        Apache License
@@ -27,7 +27,7 @@ BuildRequires:	java-devel
 BuildRequires:	javamail >= 0:1.2-5jpp
 BuildRequires:	log4j >= 0:1.2.7
 BuildRequires:	jakarta-commons-logging >= 0:1.0.1
-BuildRequires:  xml-commons-apis
+BuildRequires:  xml-commons-jaxp-1.3-apis
 BuildRequires:  bcel >= 0:5.0
 BuildRequires:	jsse
 BuildRequires:	jce
@@ -39,7 +39,7 @@ BuildRequires:  wsdl4j
 BuildRequires:  jakarta-commons-discovery
 BuildRequires:  docbook-dtd412-xml >= 0:1.0
 BuildRequires:  docbook-style-xsl >= 0:1.61
-BuildRequires:  xml-commons-resolver
+BuildRequires:  xml-commons-resolver12
 BuildRequires:  xml-commons
 BuildRequires:  jaxp_transform_impl
 BuildRequires:  xalan-j2
@@ -48,12 +48,12 @@ Requires:	jaf
 Requires:	javamail >= 0:1.2-5jpp
 Requires:	log4j >= 0:1.2.7
 Requires:	jakarta-commons-logging >= 0:1.0.1
-Requires:  	xml-commons-apis
+Requires:  	xml-commons-jaxp-1.3-apis
 Requires:  	bcel >= 0:5.0
 Requires:	jsse
 Requires:	jce
 Requires:  	axis >= 0:1.1
-Requires:  	xml-commons-resolver
+Requires:  	xml-commons-resolver12
 Requires:  	xml-commons
 Buildroot:      %{_tmppath}/%{name}-%{version}-buildroot
 Obsoletes:      openjmx
@@ -97,7 +97,7 @@ cp %{SOURCE2} build
 
 pushd lib
    ln -sf $(build-classpath junit) .
-   ln -sf $(build-classpath xml-commons-apis) xml-apis.jar
+   ln -sf $(build-classpath xml-commons-jaxp-1.3-apis) xml-apis.jar
    ln -sf $(build-classpath xerces-j2) xercesImpl.jar
    ln -sf $(build-classpath xalan-j2) xalan.jar
    ln -sf $(build-classpath commons-logging) .
@@ -116,9 +116,9 @@ popd
 %build
 export ANT_OPTS="-Djava.security.manager -Djava.security.policy=$(pwd)/build/mx4j-build.policy"
 export CLASSPATH=$(build-classpath activation javamail/mailapi javamail/smtp \
-   jakarta-commons-logging xml-commons-apis bcel jsse jaas jce \
+   jakarta-commons-logging xml-commons-jaxp-1.3-apis bcel jsse jaas jce \
    log4j jaxp_transform_impl axis/axis axis/jaxrpc axis/saaj \
-   xml-commons-resolver xdoclet/xdoclet xdoclet/xdoclet-jmx-module \
+   xml-commons-resolver12 xdoclet/xdoclet xdoclet/xdoclet-jmx-module \
    xdoclet/xdoclet-mx4j-module)
 
 export CLASSPATH=${CLASSPATH}:`pwd`/classes/core:`pwd`/build
