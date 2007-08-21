@@ -43,7 +43,7 @@ BuildRequires:  xml-commons-resolver12
 BuildRequires:  xml-commons
 BuildRequires:  jaxp_transform_impl
 BuildRequires:  xalan-j2
-Requires:       /usr/sbin/update-alternatives
+Requires:       update-alternatives
 Requires:	jaf
 Requires:	javamail >= 0:1.2-5jpp
 Requires:	log4j >= 0:1.2.7
