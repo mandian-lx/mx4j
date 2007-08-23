@@ -5,7 +5,7 @@
 
 Name:           %{name}
 Version:        %{version}
-Release:        %mkrel 4.4
+Release:        %mkrel 4.5
 Epoch:		0
 Summary:        Open source implementation of JMX Java API
 License:        Apache License
