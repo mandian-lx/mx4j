@@ -5,7 +5,7 @@
 
 Name:           %{name}
 Version:        %{version}
-Release:        %mkrel 4.5
+Release:        %mkrel 4.6
 Epoch:		0
 Summary:        Open source implementation of JMX Java API
 License:        Apache License
@@ -60,8 +60,6 @@ Obsoletes:      openjmx
 Provides:	jmxri
 %if %{gcj_support}
 BuildRequires:    java-gcj-compat-devel
-Requires(post):   java-gcj-compat
-Requires(postun): java-gcj-compat
 %endif
 
 %description
