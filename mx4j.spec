@@ -5,7 +5,7 @@
 
 Name:           %{name}
 Version:        %{version}
-Release:        %mkrel 4.6
+Release:        %mkrel 4.7
 Epoch:		0
 Summary:        Open source implementation of JMX Java API
 License:        Apache License
@@ -166,7 +166,7 @@ rm -f %{_javadir}/%{name}.jar
 %post
 /usr/sbin/update-alternatives --install %{_javadir}/jmxri.jar jmxri %{_javadir}/%{name}/%{name}-jmx.jar 0
 %if %{gcj_support}
-%{_bindir}/rebuild-gcj-db
+%{update_gcjdb}
 %endif
 
 %postun
@@ -174,7 +174,7 @@ if [ "$1" = "0" ]; then
 	/usr/sbin/update-alternatives --remove jmxri %{_javadir}/%{name}/%{name}-jmx.jar
 fi
 %if %{gcj_support}
-%{_bindir}/rebuild-gcj-db
+%{clean_gcjdb}
 %endif
 
 %files
