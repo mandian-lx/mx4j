@@ -5,7 +5,7 @@
 
 Name:           %{name}
 Version:        %{version}
-Release:        %mkrel 4.7
+Release:        %mkrel 4.8
 Epoch:		0
 Summary:        Open source implementation of JMX Java API
 License:        Apache License
@@ -19,7 +19,7 @@ Patch3:         mx4j-docbook.patch
 Patch5:         mx4j-caucho-build.patch
 Patch6:         mx4j-no-iiop.patch
 Url:            http://mx4j.sourceforge.net/
-BuildRequires:  jpackage-utils > 0:1.5
+BuildRequires:  java-rpmbuild > 0:1.5
 BuildRequires:  ant >= 0:1.6
 BuildRequires:  ant-trax, ant-junit, ant-nodeps
 BuildRequires:	jaf
