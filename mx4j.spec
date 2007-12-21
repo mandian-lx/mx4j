@@ -55,6 +55,7 @@ Requires:	jce
 Requires:  	axis >= 0:1.1
 Requires:  	xml-commons-resolver12
 Requires:  	xml-commons
+Buildroot:      %{_tmppath}/%{name}-%{version}-buildroot
 Obsoletes:      openjmx
 Provides:	jmxri
 %if %{gcj_support}
