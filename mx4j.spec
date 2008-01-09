@@ -5,7 +5,7 @@
 
 Name:           %{name}
 Version:        %{version}
-Release:        %mkrel 4.8
+Release:        %mkrel 4.8.0
 Epoch:		0
 Summary:        Open source implementation of JMX Java API
 License:        Apache License
@@ -22,9 +22,9 @@ Url:            http://mx4j.sourceforge.net/
 BuildRequires:  java-rpmbuild > 0:1.5
 BuildRequires:  ant >= 0:1.6
 BuildRequires:  ant-trax, ant-junit, ant-nodeps
-BuildRequires:	jaf
+BuildRequires:	geronimo-jaf-1.0.2-api
 BuildRequires:	java-devel
-BuildRequires:	javamail >= 0:1.2-5jpp
+BuildRequires:	geronimo-javamail-1.3.1-api
 BuildRequires:	log4j >= 0:1.2.7
 BuildRequires:	jakarta-commons-logging >= 0:1.0.1
 BuildRequires:  xml-commons-jaxp-1.3-apis
@@ -44,8 +44,8 @@ BuildRequires:  xml-commons
 BuildRequires:  jaxp_transform_impl
 BuildRequires:  xalan-j2
 Requires:       update-alternatives
-Requires:	jaf
-Requires:	javamail >= 0:1.2-5jpp
+Requires:	geronimo-jaf-1.0.2-api
+Requires:	geronimo-javamail-1.3.1-api
 Requires:	log4j >= 0:1.2.7
 Requires:	jakarta-commons-logging >= 0:1.0.1
 Requires:  	xml-commons-jaxp-1.3-apis
