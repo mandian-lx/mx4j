@@ -102,7 +102,7 @@ OpenJMX is an open source implementation of the
 Java(TM) Management Extensions (JMX).
 
 %package tools-extra
-Group:          Development/Libraries/Java
+Group:          Development/Java
 Summary:        Additional protocols and scripting for %{name}
 BuildRequires:  jython >= 2.1
 BuildRequires:  axis >= 0:1.1
