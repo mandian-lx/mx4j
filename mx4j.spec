@@ -178,7 +178,7 @@ pushd lib
    ln -sf $(build-classpath xdoclet/xdoclet-mx4j-module) .
    ln -sf $(build-classpath javamail/mailapi) .
    ln -sf $(build-classpath javamail/smtp) .
-   ln -sf $(build-classpath jaf) .
+   ln -sf $(build-classpath geronimo-jaf-1.0.2-api) .
 
    ln -sf $(build-classpath commons-discovery) .
    ln -sf $(build-classpath jetty5/jetty5) org.mortbay.jetty.jar
