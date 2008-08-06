@@ -37,7 +37,7 @@
 
 Name:           mx4j
 Version:        3.0.1
-Release:        %mkrel 7.0.1
+Release:        %mkrel 2.0.1
 Epoch:		0
 Summary:        Open source implementation of JMX Java API
 License:        Apache License
