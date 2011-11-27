@@ -32,7 +32,7 @@
 
 Name:           mx4j
 Version:        3.0.1
-Release:        12
+Release:        14
 Summary:        Open source implementation of JMX Java API
 License:        ASL 1.1
 Group:          Development/Java
