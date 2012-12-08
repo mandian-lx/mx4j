@@ -1,0 +1,115 @@
+--- build/build.xml.sav7	2010-10-07 12:32:13.580288098 -0400
++++ build/build.xml	2010-10-07 12:32:41.651409156 -0400
+@@ -60,6 +60,8 @@
+    <property name="rmx4j-boa.jar.file" value="${dist.lib.dir}/boa/${name}-remote-boa.jar"/>
+ 
+    <property name="tools.jar.file" value="${dist.lib.dir}/${name}-tools.jar"/>
++   <property name="tools.extra.jar.file" value="${dist.lib.dir}/${name}-tools-extra.jar"/>
++
+ 
+    <property name="tests.jar.file" value="${dist.test.dir}/${name}-tests.jar"/>
+ 
+@@ -105,10 +107,34 @@
+    <patternset id="tools.classes">
+       <include name="mx4j/log/**"/>
+       <include name="mx4j/util/**"/>
+-      <include name="mx4j/tools/**"/>
++      <include name="mx4j/tools/adaptor/**"/>
++      <include name="mx4j/tools/config/**"/>
++      <include name="mx4j/tools/i18n/**"/>
++      <include name="mx4j/tools/mail/**"/>
++      <include name="mx4j/tools/naming/**"/>
++      <include name="mx4j/tools/remote/*.*"/>
++      <include name="mx4j/tools/remote/http/**"/>
++      <include name="mx4j/tools/remote/local/**"/>
++      <include name="mx4j/tools/remote/provider/local/**"/>
++      <include name="mx4j/tools/remote/proxy/**"/>
++      <include name="mx4j/tools/remote/resolver/local/**"/>
++      <include name="mx4j/tools/remote/rmi/**"/>
++      <include name="mx4j/tools/stats/**"/>
+       <include name="mx4j/remote/*.*"/>
+    </patternset>
+ 
++   <patternset id="tools.extra.classes">
++      <include name="mx4j/tools/jython/**"/>
++      <include name="mx4j/tools/remote/caucho/**"/>
++      <include name="mx4j/tools/remote/provider/burlap/**"/>
++      <include name="mx4j/tools/remote/provider/hessian/**"/>
++      <include name="mx4j/tools/remote/provider/soap/**"/>
++      <include name="mx4j/tools/remote/resolver/burlap/**"/>
++      <include name="mx4j/tools/remote/resolver/hessian/**"/>
++      <include name="mx4j/tools/remote/resolver/soap/**"/>
++      <include name="mx4j/tools/remote/soap/**"/>
++   </patternset>
++
+    <patternset id="tools.files">
+       <include name="mx4j/tools/adaptor/http/**/*.xsl"/>
+       <include name="mx4j/tools/adaptor/http/**/*.xml"/>
+@@ -118,6 +144,9 @@
+       <include name="mx4j/tools/adaptor/http/**/*.gif"/>
+       <include name="mx4j/tools/adaptor/http/**/*.jpg"/>
+       <include name="mx4j/tools/adaptor/http/**/*.ico"/>
++   </patternset>
++
++   <patternset id="tools.extra.files">
+       <include name="mx4j/tools/jython/**/*.py"/>
+       <include name="mx4j/tools/remote/**/*.wsdd"/>
+    </patternset>
+@@ -314,6 +343,7 @@
+ 
+       <javac srcdir="${tools.src.dir}" destdir="${tools.classes.dir}" debug="on" deprecation="on" encoding="US-ASCII" target="1.3" source="1.3">
+          <patternset refid="tools.classes"/>
++         <patternset refid="tools.extra.classes"/>
+          <exclude name="mx4j/tools/mail/**" unless="javamail.present"/>
+          <exclude name="mx4j/tools/jython/**" unless="jython.present"/>
+          <exclude name="mx4j/tools/remote/**" unless="jaas.present"/>
+@@ -345,6 +375,25 @@
+          <zipfileset file="${etc.dir}/JMXConnectorServerProvider-tools.provider" fullpath="META-INF/services/javax.management.remote.JMXConnectorServerProvider"/>
+       </jar>
+ 
++      <jar jarfile="${tools.extra.jar.file}" manifest="${etc.dir}/MANIFEST.MF">
++         <fileset dir="${core.classes.dir}">
++            <patternset refid="tools.extra.classes"/>
++         </fileset>
++         <fileset dir="${tools.classes.dir}">
++            <patternset refid="tools.extra.classes"/>
++         </fileset>
++         <fileset dir="${core.src.dir}">
++            <patternset refid="tools.extra.files"/>
++         </fileset>
++         <fileset dir="${tools.src.dir}">
++            <patternset refid="tools.extra.files"/>
++         </fileset>
++<!--
++         <zipfileset file="${etc.dir}/JMXConnectorProvider-tools.provider" fullpath="META-INF/services/javax.management.remote.JMXConnectorProvider"/>
++         <zipfileset file="${etc.dir}/JMXConnectorServerProvider-tools.provider" fullpath="META-INF/services/javax.management.remote.JMXConnectorServerProvider"/>
+++-->
++      </jar>
++
+       <war destfile="${mx4j.soap.war.file}" manifest="${etc.dir}/MANIFEST.MF" webxml="${etc.dir}/web.xml">
+          <lib dir="${lib.dir}">
+             <include name="axis.jar"/>
+@@ -358,6 +407,7 @@
+             <include name="${name}.jar"/>
+             <include name="${name}-rjmx.jar"/>
+             <include name="${name}-tools.jar"/>
++            <include name="${name}-tools-extra.jar"/>
+          </lib>
+          <fileset dir="${etc.dir}">
+             <include name="index.jsp"/>
+@@ -433,6 +483,7 @@
+    <target name="javadocs" description="Creates the MX4J javadoc documentation" depends="compile.tools">
+       <mkdir dir="${dist.docs.api.dir}"/>
+       <javadoc destdir="${dist.docs.api.dir}"
++         classpathref="classpath"
+          author="true"
+          version="true"
+          use="true"
+@@ -523,6 +574,7 @@
+       <copy file="${rimpl.jar.file}" todir="${binary.release.dist.dir}/lib"/>
+       <copy file="${rmx4j.jar.file}" todir="${binary.release.dist.dir}/lib"/>
+       <copy file="${tools.jar.file}" todir="${binary.release.dist.dir}/lib"/>
++      <copy file="${tools.extra.jar.file}" todir="${binary.release.dist.dir}/lib"/>
+       <copy file="${mx4j.soap.war.file}" todir="${binary.release.dist.dir}/lib"/>
+       <copy file="${examples.jar.file}" todir="${binary.release.dist.dir}/lib"/>
+ 

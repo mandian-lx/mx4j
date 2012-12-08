@@ -1,5 +1,5 @@
---- mx4j/src/docs/xsl/mx4j-chunk.xsl.orig	Sun Nov 14 16:33:03 2004
-+++ mx4j/src/docs/xsl/mx4j-chunk.xsl	Thu Dec 23 20:17:30 2004
+--- mx4j-3.0.2/src/docs/xsl/mx4j-chunk.xsl.sav3	2006-10-12 19:12:17.000000000 -0400
++++ mx4j-3.0.2/src/docs/xsl/mx4j-chunk.xsl	2010-10-07 11:24:44.349385940 -0400
 @@ -1,6 +1,6 @@
  <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'>
  
@@ -8,8 +8,8 @@
    <xsl:import href="autotoc.xsl"/>
  
    <xsl:param name="html.stylesheet">styles.css</xsl:param>
---- mx4j/src/docs/index.xml.orig	Sun Nov 14 16:31:54 2004
-+++ mx4j/src/docs/index.xml	Thu Dec 23 20:19:00 2004
+--- mx4j-3.0.2/src/docs/index.xml.sav3	2006-10-12 19:12:17.000000000 -0400
++++ mx4j-3.0.2/src/docs/index.xml	2010-10-07 11:24:15.540451516 -0400
 @@ -1,5 +1,6 @@
  <?xml version="1.0" encoding="ISO-8859-1"?>
 -<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "docbook/docbookx.dtd" [

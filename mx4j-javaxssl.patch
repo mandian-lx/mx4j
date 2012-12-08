@@ -1,5 +1,5 @@
---- mx4j/src/tools/mx4j/tools/adaptor/ssl/SSLAdaptorServerSocketFactory.java.orig	Thu Dec 23 19:07:29 2004
-+++ mx4j/src/tools/mx4j/tools/adaptor/ssl/SSLAdaptorServerSocketFactory.java	Thu Dec 23 19:08:43 2004
+--- mx4j-3.0.2/src/tools/mx4j/tools/adaptor/ssl/SSLAdaptorServerSocketFactory.java.sav0	2006-10-12 19:12:17.000000000 -0400
++++ mx4j-3.0.2/src/tools/mx4j/tools/adaptor/ssl/SSLAdaptorServerSocketFactory.java	2010-10-07 11:12:08.894409459 -0400
 @@ -21,9 +21,9 @@
  import javax.net.ssl.SSLServerSocket;
  import javax.net.ssl.SSLServerSocketFactory;
