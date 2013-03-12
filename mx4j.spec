@@ -32,6 +32,8 @@
 # Don't enable tests! Missing burlap, hessian, caucho-services packages
 %define with_tests 0
 
+%define gcj_support 0
+
 %define jmx_version 1.2.1
 
 %define section free
