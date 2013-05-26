@@ -217,12 +217,15 @@ popd
 export OPT_JAR_LIST="ant/ant-junit junit xmlunit ant/ant-trax jaxp_transform_impl xalan-j2-serializer ant/ant-apache-resolver xml-commons-resolver12"
 
 cd build
+%if ! %{bootstrap}
 %if %{with_tests}
 %{ant} -Dbuild.sysclasspath=first compile.jmx compile.rjmx compile.tools tests-report javadocs docs
 %else
 %{ant} -Dbuild.sysclasspath=first compile.jmx compile.rjmx compile.tools javadocs docs
 %endif
-
+%else
+%{ant} -Dbuild.sysclasspath=first compile.jmx compile.rjmx
+%endif
 
 %install
 rm -rf %{buildroot}
@@ -360,6 +363,9 @@ fi
 %endif
 
 %changelog
+* Sun May 26 2013 Jochen Schoenfelder <arisel@arisel.de> 0:3.0.2-4
+- reintegrating bootstrap
+
 * Wed Feb 22 2012 Andrew Lukoshko <andrew.lukoshko@rosalab.ru> 0:3.0.2-2
 - adopted for 2011.0
 - spec updated with maven macroses
