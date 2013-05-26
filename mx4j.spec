@@ -85,7 +85,7 @@ BuildRequires:  jsse >= 0:1.0.2
 BuildRequires:  jce >= 0:1.2.2
 BuildRequires:  coreutils
 BuildRequires:  docbook-style-xsl >= 0:1.61
-BuildRequires:  xml-commons-resolver12
+BuildRequires:  xml-commons-resolver
 BuildRequires:  xml-commons-jaxp-1.3-apis
 BuildRequires:  xerces-j2
 BuildRequires:  libxml2-utils
@@ -107,7 +107,7 @@ Requires:       jakarta-commons-logging >= 0:1.0.1
 Requires:       bcel >= 0:5.0
 Requires:       jsse >= 0:1.0.2
 Requires:       jce >= 0:1.2.2
-Requires:       xml-commons-resolver12
+Requires:       xml-commons-resolver
 Requires:       xml-commons-jaxp-1.3-apis
 Buildroot:      %{_tmppath}/%{name}-%{version}-%{release}
 # Obsoletes:      openjmx
@@ -210,7 +210,7 @@ pushd lib
    ln -sf $(build-classpath jsse/jcert) jcert.jar
    ln -sf $(build-classpath jsse/jnet) jnet.jar
    ln -sf $(build-classpath jaas) .
-   ln -sf $(build-classpath xml-commons-resolver12) .
+   ln -sf $(build-classpath xml-commons-resolver) .
 popd
 
 %build
