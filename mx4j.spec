@@ -186,6 +186,7 @@ pushd lib
    ln -sf $(build-classpath xalan-j2) xalan.jar
    ln -sf $(build-classpath commons-logging) .
    ln -sf $(build-classpath log4j) .
+%if ! %{bootstrap}
 #   ln -sf $(build-classpath burlap) .
 #   ln -sf $(build-classpath caucho-services) .
 #   ln -sf $(build-classpath hessian) .
@@ -200,10 +201,9 @@ pushd lib
    ln -sf $(build-classpath javamail/mailapi) .
    ln -sf $(build-classpath javamail/smtp) .
    ln -sf $(build-classpath jaf) .
-
    ln -sf $(build-classpath commons-discovery) .
    ln -sf $(build-classpath jetty5/jetty5) org.mortbay.jetty.jar
-
+%endif
    ln -sf $(build-classpath bcel) .
    ln -sf $(build-classpath servletapi5) servlet.jar
    ln -sf $(build-classpath jsse) .
