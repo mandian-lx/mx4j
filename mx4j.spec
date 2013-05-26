@@ -336,6 +336,7 @@ fi
 %attr(-,root,root) %{_libdir}/gcj/%{name}/mx4j-remote-boa-%{version}.jar.*
 %endif
 
+%if ! %{bootstrap}
 %files tools-extra
 %defattr(0644,root,root,0755)
 %{_javadir}/%{name}/mx4j-tools-extra-%{version}.jar
@@ -343,15 +344,20 @@ fi
 %if %{gcj_support}
 %attr(-,root,root) %{_libdir}/gcj/%{name}/mx4j-tools-extra-%{version}.jar.*
 %endif
+%endif
 
+%if ! %{bootstrap}
 %files javadoc
 %defattr(0644,root,root,0755)
 %{_javadocdir}/%{name}-%{version}
 %{_javadocdir}/%{name}
+%endif
 
+%if ! %{bootstrap}
 %files manual
 %defattr(0644,root,root,0755)
 %doc dist/docs/*
+%endif
 
 %changelog
 * Wed Feb 22 2012 Andrew Lukoshko <andrew.lukoshko@rosalab.ru> 0:3.0.2-2
