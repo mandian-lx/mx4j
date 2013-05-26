@@ -235,8 +235,10 @@ install -d -m 755 %{buildroot}%{_datadir}/%{name}
 install -m 644 dist/lib/%{name}-impl.jar %{buildroot}%{_javadir}/%{name}/mx4j-impl-%{version}.jar
 install -m 644 dist/lib/%{name}-jmx.jar %{buildroot}%{_javadir}/%{name}/mx4j-jmx-%{version}.jar
 install -m 644 dist/lib/%{name}.jar %{buildroot}%{_javadir}/%{name}/mx4j-%{version}.jar
+%if ! %{bootstrap}
 install -m 644 dist/lib/%{name}-tools.jar %{buildroot}%{_javadir}/%{name}/mx4j-tools-%{version}.jar
 install -m 644 dist/lib/%{name}-tools-extra.jar %{buildroot}%{_javadir}/%{name}/mx4j-tools-extra-%{version}.jar
+%endif
 install -m 644 dist/lib/%{name}-rjmx.jar %{buildroot}%{_javadir}/%{name}/mx4j-rjmx-%{version}.jar
 install -m 644 dist/lib/%{name}-rimpl.jar %{buildroot}%{_javadir}/%{name}/mx4j-rimpl-%{version}.jar
 install -m 644 dist/lib/%{name}-remote.jar %{buildroot}%{_javadir}/%{name}/mx4j-remote-%{version}.jar
