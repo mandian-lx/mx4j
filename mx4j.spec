@@ -335,7 +335,9 @@ fi
 %if %{gcj_support}
 %dir %{_libdir}/gcj/%{name}
 %attr(-,root,root) %{_libdir}/gcj/%{name}/mx4j-%{version}.jar.*
+%if ! %{bootstrap}
 %attr(-,root,root) %{_libdir}/gcj/%{name}/mx4j-tools-%{version}.jar.*
+%endif
 %attr(-,root,root) %{_libdir}/gcj/%{name}/mx4j-remote-boa-%{version}.jar.*
 %endif
 
