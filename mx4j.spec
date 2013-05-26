@@ -38,6 +38,8 @@
 
 %define section free
 
+%define bootstrap 1
+
 Name:           mx4j
 Version:        3.0.2
 Release:        4
@@ -66,6 +68,7 @@ BuildRequires:  jpackage-utils > 0:1.6
 BuildRequires:  ant >= 0:1.6
 BuildRequires:  java-rpmbuild > 0:1.5
 BuildRequires:  ant-trax
+%if ! %{bootstrap}
 BuildRequires:  ant-apache-resolver
 BuildRequires:  jaf
 BuildRequires:  javamail >= 0:1.2
@@ -73,6 +76,7 @@ BuildRequires:  xjavadoc
 BuildRequires:  xdoclet
 BuildRequires:  wsdl4j
 BuildRequires:  jakarta-commons-discovery
+%endif
 BuildRequires:  bcel >= 0:5.0
 BuildRequires:  log4j >= 0:1.2.7
 BuildRequires:  jakarta-commons-logging >= 0:1.0.1
@@ -94,8 +98,10 @@ BuildRequires:  xmlunit
 %if ! %{gcj_support}
 Buildarch:      noarch
 %endif
+%if ! %{bootstrap}
 Requires:       jaf
 Requires:       javamail >= 0:1.2
+%endif
 Requires:       log4j >= 0:1.2.7
 Requires:       jakarta-commons-logging >= 0:1.0.1
 Requires:       bcel >= 0:5.0
@@ -115,6 +121,7 @@ BuildRequires:          java-gcj-compat-devel
 OpenJMX is an open source implementation of the
 Java(TM) Management Extensions (JMX).
 
+%if ! %{bootstrap}
 %package tools-extra
 Group:          Development/Java
 Summary:        Additional protocols and scripting for %{name}
@@ -131,7 +138,9 @@ Requires:       axis >= 0:1.1
 
 %description tools-extra
 %{summary}.
+%endif
 
+%if ! %{bootstrap}
 %package javadoc
 Group:          Development/Java
 Summary:        Javadoc for %{name}
@@ -139,13 +148,16 @@ Summary:        Javadoc for %{name}
 
 %description javadoc
 %{summary}.
+%endif
 
+%if ! %{bootstrap}
 %package manual
 Group:          Development/Java
 Summary:        Documentation for %{name}
 
 %description    manual
 %{summary}.
+%endif
 
 %prep
 %setup -q
