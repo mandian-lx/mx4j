@@ -267,11 +267,11 @@ cp -p %{SOURCE4} %{buildroot}%{_mavenpomdir}/JPP.%{name}-mx4j-remote.pom
 %add_to_maven_depmap mx4j mx4j %{version} JPP/%{name} mx4j
 %add_to_maven_depmap mx4j mx4j-remote %{version} JPP/%{name} mx4j-remote
 
-
+%if ! %{bootstrap}
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}-%{version}
 cp -r dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}-%{version}
 ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
-
+%endif
 
 %if %{gcj_support}
 %{_bindir}/aot-compile-rpm
@@ -322,8 +322,10 @@ fi
 %{_javadir}/%{name}/mx4j-rimpl.jar
 %{_javadir}/%{name}/mx4j-rjmx-%{version}.jar
 %{_javadir}/%{name}/mx4j-rjmx.jar
+%if ! %{bootstrap}
 %{_javadir}/%{name}/mx4j-tools-%{version}.jar
 %{_javadir}/%{name}/mx4j-tools.jar
+%endif
 %dir %{_javadir}/%{name}/boa
 %{_javadir}/%{name}/boa/mx4j-remote-boa-%{version}.jar
 %{_javadir}/%{name}/boa/mx4j-remote-boa.jar
