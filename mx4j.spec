@@ -38,11 +38,11 @@
 
 %define section free
 
-%define bootstrap 1
+%define bootstrap 0
 
 Name:           mx4j
 Version:        3.0.2
-Release:        4
+Release:        5
 Epoch:          0
 Summary:        Open source implementation of JMX Java API
 License:        Apache License
