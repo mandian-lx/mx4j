@@ -40,82 +40,75 @@
 
 %define bootstrap 0
 
-Name:           mx4j
-Version:        3.0.2
-Release:        5
-Epoch:          0
-Summary:        Open source implementation of JMX Java API
-License:        Apache License
-Group:          Development/Java
-URL:            http://mx4j.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/project/mx4j/MX4J%20Source/3.0.2/mx4j-3.0.2-src.tar.gz
-Source1:        %{name}-build.policy
-Source2:        CatalogManager.properties
-Source3:        http://mirrors.ibiblio.org/pub/mirrors/maven2/mx4j/mx4j/3.0.2/mx4j-3.0.2.pom
-Source4:        http://mirrors.ibiblio.org/pub/mirrors/maven2/mx4j/mx4j-remote/3.0.2/mx4j-remote-3.0.2.pom
-Patch0:         mx4j-javaxssl.patch
-Patch2:         mx4j-build.patch
-Patch3:         mx4j-docbook.patch
-Patch5:         mx4j-caucho-build.patch
-Patch7:         mx4j-split-tools.patch
-Requires(post): jpackage-utils
-Requires(postun): jpackage-utils
-Requires:       jpackage-utils
-Requires(pre):  coreutils
-Requires(post): %{_sbindir}/update-alternatives
-Requires(postun): %{_sbindir}/update-alternatives
-BuildRequires:  jpackage-utils > 0:1.6
-BuildRequires:  ant >= 0:1.6
-BuildRequires:  java-rpmbuild > 0:1.5
-BuildRequires:  ant-trax
+Summary:	Open source implementation of JMX Java API
+Name:		mx4j
+Version:	3.0.2
+Release:	5
+License:	Apache License
+Group:		Development/Java
+Url:		http://mx4j.sourceforge.net/
+Source0:	http://downloads.sourceforge.net/project/mx4j/MX4J%20Source/3.0.2/mx4j-3.0.2-src.tar.gz
+Source1:	%{name}-build.policy
+Source2:	CatalogManager.properties
+Source3:	http://mirrors.ibiblio.org/pub/mirrors/maven2/mx4j/mx4j/3.0.2/mx4j-3.0.2.pom
+Source4:	http://mirrors.ibiblio.org/pub/mirrors/maven2/mx4j/mx4j-remote/3.0.2/mx4j-remote-3.0.2.pom
+Patch0:		mx4j-javaxssl.patch
+Patch2:		mx4j-build.patch
+Patch3:		mx4j-docbook.patch
+Patch5:		mx4j-caucho-build.patch
+Patch7:		mx4j-split-tools.patch
+BuildRequires:	jpackage-utils > 0:1.6
+BuildRequires:	ant >= 0:1.6
+BuildRequires:	java-rpmbuild > 0:1.5
+BuildRequires:	ant-trax
 %if ! %{bootstrap}
-BuildRequires:  ant-apache-resolver
-BuildRequires:  jaf
-BuildRequires:  javamail >= 0:1.2
-BuildRequires:  xjavadoc
-BuildRequires:  xdoclet
-BuildRequires:  wsdl4j
-BuildRequires:  jakarta-commons-discovery
+BuildRequires:	ant-apache-resolver
+BuildRequires:	jaf
+BuildRequires:	javamail >= 0:1.2
+BuildRequires:	xjavadoc
+BuildRequires:	xdoclet
+BuildRequires:	wsdl4j
+BuildRequires:	jakarta-commons-discovery
 %endif
-BuildRequires:  bcel >= 0:5.0
-BuildRequires:  log4j >= 0:1.2.7
-BuildRequires:  jakarta-commons-logging >= 0:1.0.1
-# BuildRequires:  jetty5
-BuildRequires:  jsse >= 0:1.0.2
-BuildRequires:  jce >= 0:1.2.2
-BuildRequires:  coreutils
-BuildRequires:  docbook-style-xsl >= 0:1.61
-BuildRequires:  xml-commons-resolver
-BuildRequires:  xml-commons-jaxp-1.3-apis
-BuildRequires:  xerces-j2
-BuildRequires:  libxml2-utils
-
+BuildRequires:	bcel >= 0:5.0
+BuildRequires:	log4j >= 0:1.2.7
+BuildRequires:	jakarta-commons-logging >= 0:1.0.1
+# BuildRequires:	jetty5
+BuildRequires:	jsse >= 0:1.0.2
+BuildRequires:	jce >= 0:1.2.2
+BuildRequires:	coreutils
+BuildRequires:	docbook-style-xsl >= 0:1.61
+BuildRequires:	xml-commons-resolver
+BuildRequires:	xml-commons-jaxp-1.3-apis
+BuildRequires:	xerces-j2
+BuildRequires:	libxml2-utils
+%if %{gcj_support}
+BuildRequires:	java-gcj-compat-devel
+%endif
 %if %{with_tests}
-BuildRequires:  ant-junit
-BuildRequires:  junit >= 0:3.7.1
-BuildRequires:  xmlunit
+BuildRequires:	ant-junit
+BuildRequires:	junit >= 0:3.7.1
+BuildRequires:	xmlunit
 %endif
 %if ! %{gcj_support}
-Buildarch:      noarch
+Buildarch:	noarch
 %endif
 %if ! %{bootstrap}
-Requires:       jaf
-Requires:       javamail >= 0:1.2
+Requires:	jaf
+Requires:	javamail >= 0:1.2
 %endif
-Requires:       log4j >= 0:1.2.7
-Requires:       jakarta-commons-logging >= 0:1.0.1
-Requires:       bcel >= 0:5.0
-Requires:       jsse >= 0:1.0.2
-Requires:       jce >= 0:1.2.2
-Requires:       xml-commons-resolver
-Requires:       xml-commons-jaxp-1.3-apis
-Buildroot:      %{_tmppath}/%{name}-%{version}-%{release}
-# Obsoletes:      openjmx
-Provides:       jmxri = %{version}-%{release}
-
-%if %{gcj_support}
-BuildRequires:          java-gcj-compat-devel
-%endif
+Requires:	log4j >= 0:1.2.7
+Requires:	jakarta-commons-logging >= 0:1.0.1
+Requires:	bcel >= 0:5.0
+Requires:	jsse >= 0:1.0.2
+Requires:	jce >= 0:1.2.2
+Requires:	xml-commons-resolver
+Requires:	xml-commons-jaxp-1.3-apis
+Requires(post,postun):	jpackage-utils
+Requires:	jpackage-utils
+Requires(pre):	coreutils
+Requires(post,postun):	%{_sbindir}/update-alternatives
+Provides:	jmxri = %{version}-%{release}
 
 %description
 OpenJMX is an open source implementation of the
@@ -123,18 +116,18 @@ Java(TM) Management Extensions (JMX).
 
 %if ! %{bootstrap}
 %package tools-extra
-Group:          Development/Java
-Summary:        Additional protocols and scripting for %{name}
-BuildRequires:  jython >= 0:2.1
-BuildRequires:  axis >= 0:1.1
-# BuildRequires:  burlap >= 0:3.0.8
-# BuildRequires:  caucho-services
-# BuildRequires:  hessian >= 0:3.0.8
-Requires:       jython >= 0:2.1
-Requires:       axis >= 0:1.1
-# Requires:       burlap >= 0:3.0.8
-# Requires:       caucho-services
-# Requires:       hessian >= 0:3.0.8
+Group:		Development/Java
+Summary:	Additional protocols and scripting for %{name}
+BuildRequires:	jython >= 0:2.1
+BuildRequires:	axis >= 0:1.1
+# BuildRequires:	burlap >= 0:3.0.8
+# BuildRequires:	caucho-services
+# BuildRequires:	hessian >= 0:3.0.8
+Requires:	jython >= 0:2.1
+Requires:	axis >= 0:1.1
+# Requires:	burlap >= 0:3.0.8
+# Requires:	caucho-services
+# Requires:	hessian >= 0:3.0.8
 
 %description tools-extra
 %{summary}.
@@ -142,9 +135,9 @@ Requires:       axis >= 0:1.1
 
 %if ! %{bootstrap}
 %package javadoc
-Group:          Development/Java
-Summary:        Javadoc for %{name}
-# Obsoletes:      openjmx-javadoc
+Group:		Development/Java
+Summary:	Javadoc for %{name}
+# Obsoletes:	openjmx-javadoc
 
 %description javadoc
 %{summary}.
@@ -152,8 +145,8 @@ Summary:        Javadoc for %{name}
 
 %if ! %{bootstrap}
 %package manual
-Group:          Development/Java
-Summary:        Documentation for %{name}
+Group:		Development/Java
+Summary:	Documentation for %{name}
 
 %description    manual
 %{summary}.
@@ -228,8 +221,6 @@ cd build
 %endif
 
 %install
-rm -rf %{buildroot}
-
 install -d -m 755 %{buildroot}%{_javadir}/%{name}
 install -d -m 755 %{buildroot}%{_datadir}/%{name}
 install -m 644 dist/lib/%{name}-impl.jar %{buildroot}%{_javadir}/%{name}/mx4j-impl-%{version}.jar
@@ -277,7 +268,6 @@ ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
 %{_bindir}/aot-compile-rpm
 %endif
 
-
 %pre
 %{__rm} -f %{_javadir}/%{name}.jar
 
@@ -308,7 +298,6 @@ fi
 %endif
 
 %files
-%defattr(0644,root,root,0755)
 %dir %{_javadir}/%{name}
 %{_javadir}/%{name}/mx4j-%{version}.jar
 %{_javadir}/%{name}/mx4j.jar
@@ -368,118 +357,3 @@ fi
 %doc dist/docs/*
 %endif
 
-%changelog
-* Sun May 26 2013 Jochen Schoenfelder <arisel@arisel.de> 0:3.0.2-4
-- reintegrating bootstrap
-
-* Wed Feb 22 2012 Andrew Lukoshko <andrew.lukoshko@rosalab.ru> 0:3.0.2-2
-- adopted for 2011.0
-- spec updated with maven macroses
-- RPM5 don't need clean section anymore
-- made rpmlint happier
-
-* Thu Oct 07 2010 David Walluck <dwalluck@redhat.com> 0:3.0.2-1
-- 3.0.2
-- add a couple poms
-- add boa symlinks
-
-* Fri Oct 24 2008 David Walluck <dwalluck@redhat.com> 0:3.0.1-9
-- License is ASL 1.1
-
-* Wed Jul 23 2008 David Walluck <dwalluck@redhat.com> 0:3.0.1-8
-- remove javadoc scriptlets
-- GCJ fixes
-- fix file ownership
-- update License
-- update BuildRoot
-- remove Vendor and Distribution
-- use macros
-- add xalan-j2-serializer to OPT_JAR_LIST
-
-* Tue Feb 13 2007 Ralph Apel <r.apel at r-apel.de> 0:3.0.1-7jpp
-- Add bootstrap option: omit tools
-- Split out tools-extra subpackage, split mx4j-tools.jar
-- Reactivated jetty
-
-* Fri Aug 25 2006 Deepak Bhole <dbhole@redhat.com> 0:3.0.1-6jpp
-- Make tests conditional
-- Fixed build file to correctly resolve dtds.
-
-* Mon Jul 24 2006 Fernando Nasser <fnasser@redhat.com> 0:3.0.1-5jpp
-From Thomas Fitzsimmons <fitzsim@redhat.com>:
-- Require xerces-j2
-
-* Tue Jul 18 2006 Fernando Nasser <fnasser@redhat.com> 0:3.0.1-4jpp
-- Remove duplicate macros
-- Use unversioned burlap and hessian
-- Don't use jetty4 as it is not yet available on JPP 1.7
-- Re-add Epoch to the versions required
-- Split patch for removal of poa
-- Add AOT bits
-
-* Tue Mar 14 2006 Fernando Nasser <fnasser@redhat.com> 0:3.0.1-3jpp
-- Remove dependencies on non-free JXM packages by building MX4J's own
-- Add (re-add?) "java.naming.corba.orb" patch, needed by JOnAS
-
-* Fri Mar 10 2006 Ralph Apel <r.apel@r-apel.de> 0:3.0.1-2jpp
-- Activate burlap and hessian support
-- Most unit tests now pass with java-1.4.2-sun-1.4.2.10-1jpp
-
-* Fri Apr 22 2005 Fernando Nasser <fnasser@redhat.com> 0:3.0.1-1jpp
-- Upgrade to 3.0.1
-
-* Wed Apr 20 2005 Fernando Nasser <fnasser@redhat.com> 0:2.1.0-1jpp
-- Upgrade to 2.1.0
-- Do not build caucho part because of version incompatibilities
-  From Andrew Overholt <overholt@redhat.com>
-- add coreutils BuildRequires
-
-* Tue Mar 08 2005 Ralph Apel <r.apel at r-apel.de> 0:2.0.1-3jpp
-- Drop spurious Requires: junit
-
-* Fri Sep 24 2004 Ralph Apel <r.apel at r-apel.de> 0:2.0.1-2jpp
-- Require xml-commons (jpackage), not xml-common (linux)
-- Activate jython- and jetty-related classes
-- Activate unit tests, therefore BuildReq xmlunit
-- Include compliance test, therefore BuildReq jmx, jmxremote
-- Define essential runtime requires
-- Use security manager and relaxed policy
-
-* Fri Jun 25 2004 Aizaz Ahmed <aahmed@redhat.com> 1:2.0.1-1jpp
-- Updated to use mx4j-2.0.1
-- Rebuilt with Ant 1.6.2
-
-* Mon Mar 24 2003 Nicolas Mailhot <Nicolas.Mailhot (at) JPackage.org> 1.1.1-4jpp
-- jmxri alternative
-
-* Mon Mar 24 2003 Nicolas Mailhot <Nicolas.Mailhot (at) JPackage.org> 1.1.1-3jpp
-- use own dir
-- For jpackage-utils 1.5
-
-* Thu Feb 20 2003 Henri Gomez <hgomez@users.sourceforge.net> 1.1.1-1jpp
-- mx4j 1.1.1
-- grabed from CVS TAG MX4J_1_1_1
-
-* Wed Sep 18 2002 Henri Gomez <hgomez@users.sourceforge.net> 1.1-3jpp
-- added missing xsl/jython resources in mx4j-tools.jar
-- correct the build.xml to have correct contents for mx4.jar and mx4j-tools.jar
-
-* Tue Jul 02 2002 Guillaume Rousse <guillomovitch@users.sourceforge.net> 1.1-2jpp
-- bzipped additional sources
-- section macro
-- ant already requires jaxp_parser
-- fixed source perms
-- fixed compilation with jsse and javamail
-- buildrequires jsse >= 1.0.2-6jpp
-- buildrequires javamail >= 1.2-5jpp
-
-* Mon Jun 10 2002 Henri Gomez <hgomez@users.sourceforge.net> 1.1-1jpp
-- mx4j 1.1
-- set correct jpackage tags
-- add provide jmxri
-
-* Mon Mar 04 2002 Henri Gomez <hgomez@users.sourceforge.net> 1.0b3-1jpp
-- mx4j 1.0b3 (previous name was openjmx)
-
-* Fri Jan 18 2002 Henri Gomez <hgomez@users.sourceforge.net> 1.0b1-1jpp
-- first JPackage release
