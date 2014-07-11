@@ -43,7 +43,7 @@
 Summary:	Open source implementation of JMX Java API
 Name:		mx4j
 Version:	3.0.2
-Release:	10
+Release:	11
 License:	Apache License
 Group:		Development/Java
 Url:		http://mx4j.sourceforge.net/
