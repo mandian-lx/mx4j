@@ -78,6 +78,7 @@ BuildRequires:	jakarta-commons-logging >= 0:1.0.1
 BuildRequires:	jsse >= 0:1.0.2
 BuildRequires:	jce >= 0:1.2.2
 BuildRequires:	coreutils
+BuildRequires:  dos2unix
 BuildRequires:	docbook-style-xsl >= 0:1.61
 BuildRequires:	xml-commons-resolver
 BuildRequires:	xml-commons-jaxp-1.3-apis
