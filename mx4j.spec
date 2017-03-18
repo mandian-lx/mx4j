@@ -68,11 +68,11 @@ BuildRequires:	javamail >= 0:1.2
 BuildRequires:	xjavadoc
 BuildRequires:	xdoclet
 BuildRequires:	wsdl4j
-BuildRequires:	jakarta-commons-discovery
+BuildRequires:	apache-commons-discovery
 %endif
 BuildRequires:	bcel >= 0:5.0
 BuildRequires:	log4j >= 0:1.2.7
-BuildRequires:	jakarta-commons-logging >= 0:1.0.1
+BuildRequires:	apache-commons-logging >= 0:1.0.1
 # BuildRequires:	jetty5
 BuildRequires:	jsse >= 0:1.0.2
 BuildRequires:	jce >= 0:1.2.2
@@ -98,7 +98,7 @@ Requires:	jaf
 Requires:	javamail >= 0:1.2
 %endif
 Requires:	log4j >= 0:1.2.7
-Requires:	jakarta-commons-logging >= 0:1.0.1
+Requires:	apache-commons-logging >= 0:1.0.1
 Requires:	bcel >= 0:5.0
 Requires:	jsse >= 0:1.0.2
 Requires:	jce >= 0:1.2.2
